@@ -7,9 +7,14 @@ email = input("Email: ")
 token = input("Api key: ")
 region = input("Region (us or eu): ")
 website_id = input("Website id: ")
+print("--------\n")
+print("!IMPORTANT -- Only 10k records can be pulled from a defined date range, use a smaller range if site contains a lot of data --!\n")
+from_date = input("Input start date (yyyy-mm-dd): ")
+to_date = input("Input end date (yyyy-mm-dd): ")
 print("--------")
 
-requestString = "https://api-{}.mouseflow.com/websites/{}/recordings?tags=click-error".format(region, website_id)
+requestString = "https://api-{}.mouseflow.com/websites/{}/recordings?tags=click-error&fromdate={}&todate={}".format(region, website_id, from_date, to_date)
+
 req = requests.get(requestString, auth=HTTPBasicAuth(email, token))
 data = req.json()
 

@@ -1,5 +1,6 @@
 import json
 import requests
+import pycountry
 from requests.auth import HTTPBasicAuth
 from collections import Counter
 
@@ -36,14 +37,15 @@ if "recordings" in data:
             percent = (count / total_recordings) * 100
             print(f"= {city} | {count} | {percent}%")
         print("--------\n")
-        print("Top Countries")
+        print("Top 150 Countries")
         print("----Country | Recording Count | Percentage----")
+
         for country, count in top_country:
-            percent = (count / total_recordings) * 100
-            print(f"= {country} | {count} | {percent}%")
+                country_code = country.upper()
+
+                percent = (count / total_recordings) * 100
+                country_lookup = pycountry.countries.get(alpha_2=country_code)
+                if country_lookup:
+                    country_name = country_lookup.name
+                    print(f"= {country_name} | {count} | {percent}%")
         print("--------")
-else:
-    print("No recordings found in the response.")
-
-
-

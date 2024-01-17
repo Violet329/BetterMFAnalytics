@@ -56,7 +56,7 @@ end = input("Type 1 to search more data, or type 2 to exit: ")
 if(end ==  '2'):
     sys.exit()
 
-tv_input = input("Type tag or var to search: ").lower()
+tv_input = input("Choose which to search by (tag/var): ").lower()
 
 if tv_input == 'tag':
     type_input = input("Enter tag name:").lower()

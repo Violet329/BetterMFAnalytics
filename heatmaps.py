@@ -11,13 +11,18 @@ website_id = input("Enter a website id: ")
 page_name = input("Enter a page name: ")
 encoded_page_name = quote(page_name)
 device_input = input("Enter the device (desktop, tablet, or phone): ").lower()
+print("--------\n")
+print("!IMPORTANT -- Only 10k records can be pulled from a defined date range, use a smaller range if site contains a lot of data --!\n")
+from_date = input("Input start date (yyyy-mm-dd): ")
+to_date = input("Input end date (yyyy-mm-dd): ")
+print("--------")
+
 
 if device_input in ['desktop', 'tablet', 'phone']:
     chosen_device = device_input
 
-requestString = "https://api-{}.mouseflow.com/websites/{}/link-analytics?url={}&device={}".format(region,
-    website_id, encoded_page_name, chosen_device
-)
+requestString = "https://api-{}.mouseflow.com/websites/{}/link-analytics?url={}&device={}&fromdate={}&todate={}".format(region,
+    website_id, encoded_page_name, chosen_device, from_date, to_date)
 r = requests.get(requestString, auth=HTTPBasicAuth(email, token))
 
 data = r.json()

@@ -112,13 +112,13 @@ if tv_input == 'var':
     dataVar = reqVar.json()
     sorted_pages = sorted(dataVar['pages'], key=lambda x: x['views'], reverse=True)
 
-    # Get the top 5 viewed pages
-    top_5_pages = sorted_pages[:5]
+    
+    top_10_pages = sorted_pages[:10]
 
-    # Extract and print the displayURL of the top 3 viewed pages
-    top_5_display_urls = [page['displayUrl'] for page in top_5_pages]
-    print("\nTop 5 Pages with this variable:")
-    for url in top_5_display_urls:
+
+    top_10_display_urls = [page['displayUrl'] for page in top_10_pages]
+    print("\nTop 10 Pages with this variable:")
+    for url in top_10_display_urls:
         print(f"- {url}")
     print("--------")
 

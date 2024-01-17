@@ -28,25 +28,26 @@ all_tags = [tags for recording in datar["recordings"] for tags in recording["tag
 all_variables = [variables for recording in datar["recordings"] for variables in recording["variables"]]
 
 # Find the top 5 most common tags and variables
-top_tags = Counter(all_tags).most_common(5)
-top_variables = Counter(all_variables).most_common(5)
+top_tags = Counter(all_tags).most_common(10)
+top_variables = Counter(all_variables).most_common(10)
 
 # Extract engagement time from recordings
 engagement_times = [recording["engagementTime"] for recording in datar["recordings"]]
 
 # Calculate the average engagement time
 average_engagement_time = sum(engagement_times) / len(engagement_times) if engagement_times else 0
+convert = (average_engagement_time / 1000)
 
-print(f"Average Engagement Time: {average_engagement_time:.2f} ms (10k most recent recordings)\n")
+print(f"Average Engagement Time: {convert:.2f} seconds (10k most recent recordings)\n")
 
 if top_tags:
-    print("Top 5 Tags (10k most recent recordings):")
+    print("Top 10 Tags (10k most recent recordings):")
     for tag, count in top_tags:
         print(f"- {tag}: {count}")
         
 
 if top_variables: 
-    print("\nTop 5 Variables (10k most recent recordings):")
+    print("\nTop 10 Variables (10k most recent recordings):")
     for variable, count in top_variables:
         print(f"- {variable}: {count}")
        

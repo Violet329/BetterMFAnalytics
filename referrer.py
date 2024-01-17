@@ -28,7 +28,7 @@ if "recordings" in data:
 
     if top_ref:
         print("\nTop 100 referrers:\n")
-        print("----|URL|----|Count|----|Percentage|")
+        print("----|URL|----|Count|----|Percentage|\n")
         for referrer, count in top_ref:
             percent = (count / total_recordings) * 100
             print(f"= {referrer}| {count} | {percent}%")

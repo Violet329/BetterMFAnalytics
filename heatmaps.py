@@ -133,7 +133,7 @@ with open('heatmap.txt', 'w') as file:
     file.write(f"Number of clicks for the above element: {most_clicks_count}\n")
     file.write(f"Total clicking visitors for the above element: {most_clicks_clicking_visitors}\n")
     calc6 = (most_clicks_clicking_visitors / total_visit_count) * 100
-    file.write(f"Percent of total visitors that click this element: {calc6}")
+    file.write(f"Percent of total visitors that click this element: {calc6}\n")
     file.write(f"Average timeBeforeClick for the element above: {most_clicks_time_before_click} ms\n")
     file.write("\n-----\n\n")
 print("Output saved to heatmap.txt")

@@ -34,6 +34,3 @@ if "recordings" in data:
             print(f"= {referrer}| {count} | {percent}%")
 else:
     print("No recordings found in the response.")
-
-
-

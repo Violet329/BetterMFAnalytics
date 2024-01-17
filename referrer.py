@@ -24,12 +24,13 @@ if "recordings" in data:
     all_referrers = [recording["referrer"] for recording in data["recordings"] if recording.get("referrer")]
 
     top_ref = Counter(all_referrers).most_common(100)
+    total_recordings = len(data["recordings"])
 
     if top_ref:
         print("\nTop 100 referrers:\n")
         print("----|URL|----|Count|----|Percentage|")
         for referrer, count in top_ref:
-            percent = (count / 10000) * 100
+            percent = (count / total_recordings) * 100
             print(f"= {referrer}| {count} | {percent}%")
 else:
     print("No recordings found in the response.")
